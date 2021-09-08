@@ -1,0 +1,47 @@
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { resolveErrors } from "./error";
+import { Error } from "./types";
+
+let _client: AxiosInstance;
+
+/**
+ * create new axios instance
+ *
+ * @param config axios config
+ * @param string default error message
+ */
+export function createAxiosInstance(
+    message: string,
+    config?: AxiosRequestConfig
+) {
+    _client = axios.create(config);
+    _client.interceptors.response.use(
+        resp => resp,
+        err => {
+            const e: Error = {};
+            e.message = message;
+            if (err.response) {
+                e.raw = err.response;
+                e.type = "response";
+                e.body = err.response.data;
+                e.status = err.response.status;
+            } else if (err.request) {
+                e.raw = err.request;
+                e.type = "request";
+            } else {
+                e.raw = err;
+                e.type = undefined;
+            }
+            resolveErrors(e);
+            Promise.reject(e);
+        }
+    );
+}
+
+/**
+ * get axios instance
+ */
+export function client(): AxiosInstance {
+    _client || createAxiosInstance("");
+    return _client;
+}
