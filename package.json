@@ -1,6 +1,6 @@
 {
     "name": "@bardoui/http",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "private": false,
     "description": "Axios based HTTP client with error handlers",
     "license": "ISC",
@@ -9,7 +9,6 @@
     "unpkg": "dist/http.global.js",
     "typings": "dist/http.d.ts",
     "scripts": {
-        "serve": "vue-cli-service serve demo/main.ts",
         "build": "rollup -c",
         "prepare": "npm run build"
     },
@@ -35,28 +34,17 @@
     },
     "dependencies": {
         "axios": "^0.21.1",
-        "core-js": "^3.6.5",
-        "vue": "^3.0.11"
+        "core-js": "^3.6.5"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^19.0.0",
         "@types/axios": "^0.14.0",
         "@typescript-eslint/eslint-plugin": "^4.18.0",
         "@typescript-eslint/parser": "^4.18.0",
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
-        "@vue/cli-plugin-typescript": "~4.5.0",
-        "@vue/cli-service": "~4.5.0",
-        "@vue/compiler-sfc": "^3.0.0",
-        "@vue/eslint-config-typescript": "^7.0.0",
         "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^7.0.0",
         "rollup": "^2.50.5",
         "rollup-plugin-cleaner": "^1.0.0",
         "rollup-plugin-typescript2": "^0.30.0",
-        "rollup-plugin-vue": "^6.0.0",
-        "sass": "^1.26.5",
-        "sass-loader": "^8.0.2",
         "typescript": "^4.3.2"
     }
 }

@@ -1,11 +1,10 @@
 import commonjs from "@rollup/plugin-commonjs";
-import VuePlugin from "rollup-plugin-vue";
 import pkg from "./package.json";
 import typescript from "rollup-plugin-typescript2";
 import cleaner from "rollup-plugin-cleaner";
 
 export default {
-    input: "src/httpClient.ts",
+    input: "src/http.ts",
     dest: "dist",
     output: [
         {
@@ -22,10 +21,7 @@ export default {
             file: pkg.unpkg,
             format: "umd",
             name: "httpClient",
-            sourcemap: true,
-            globals: {
-                vue: "Vue"
-            }
+            sourcemap: true
         }
     ],
     plugins: [
@@ -35,8 +31,6 @@ export default {
         typescript({
             tsconfig: "./tsconfig.json"
         }),
-        VuePlugin(),
         commonjs()
-    ],
-    external: ["vue"]
+    ]
 };
