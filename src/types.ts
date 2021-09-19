@@ -5,7 +5,7 @@ export interface Error {
     raw?: any;
     type?: "response" | "request";
     identifier?: string;
-    body?: unknown;
+    body?: any;
     status?: number;
     message?: string;
 }
