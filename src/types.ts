@@ -18,12 +18,8 @@ export interface Error {
  */
 export function isError(obj: any): obj is Error {
     return (
-        "raw" in obj &&
         "type" in obj &&
-        "identifier" in obj &&
-        "body" in obj &&
-        "status" in obj &&
-        "message" in obj
+        ["response", "request", undefined].includes(obj["type"])
     );
 }
 
