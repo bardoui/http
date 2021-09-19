@@ -11,6 +11,34 @@ export interface Error {
 }
 
 /**
+ * check if object is error
+ *
+ * @param obj object
+ * @returns boolean
+ */
+export function isError(obj: any): obj is Error {
+    return (
+        "raw" in obj &&
+        "type" in obj &&
+        "identifier" in obj &&
+        "body" in obj &&
+        "status" in obj &&
+        "message" in obj
+    );
+}
+
+/**
+ * Try to parse error object as Error interface
+ *
+ * @param obj error object
+ * @returns Error interface or null
+ */
+export function ParseAsError(obj: any): Error | null {
+    if (isError(obj)) return obj as Error;
+    return null;
+}
+
+/**
  * Error handler function signature
  *
  * Return true to apply parser and continue

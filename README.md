@@ -43,6 +43,24 @@ Error record contains following fields:
 - **status**: numeric http status code or `undefined`
 - **message**: error message set by parser function or used default client message.
 
+#### Cast Error As Error Interface
+
+You can use `ParseAsError` function to parse error as error interface. this function returns `null` if passed parameter not a error object.
+
+```ts
+import { client, ParseAsError } from "@bardoui/http";
+client()
+  .get("test-url")
+  .catch((err: any) => {
+    let error = ParseAsError(err);
+    if (error == null) {
+      // Error not a error interface type
+    } else {
+      console.log(err.status);
+    }
+  });
+```
+
 ### Register Custom Error Parser
 
 **Note:** You can register multiple parser with same identifier.

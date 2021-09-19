@@ -33,7 +33,7 @@ export function createAxiosInstance(
                 e.type = undefined;
             }
             resolveErrors(e);
-            Promise.reject(e);
+            return Promise.reject(e);
         }
     );
 }
