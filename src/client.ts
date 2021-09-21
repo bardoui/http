@@ -3,6 +3,7 @@ import { resolveErrors } from "./error";
 import { Error } from "./types";
 
 let _client: AxiosInstance;
+let _message: string;
 
 /**
  * create new axios instance
@@ -15,11 +16,11 @@ export function createAxiosInstance(
     config?: AxiosRequestConfig
 ) {
     _client = axios.create(config);
+    _message = message;
     _client.interceptors.response.use(
-        resp => resp,
-        err => {
-            const e: Error = {};
-            e.message = message;
+        (resp) => resp,
+        (err) => {
+            const e = createError()
             if (err.response) {
                 e.raw = err.response;
                 e.type = "response";
@@ -44,4 +45,13 @@ export function createAxiosInstance(
 export function client(): AxiosInstance {
     _client || createAxiosInstance("");
     return _client;
+}
+
+/**
+ * create empty error with default message
+ */
+export function createError(): Error {
+    const e: Error = {};
+    e.message = _message;
+    return e;
 }

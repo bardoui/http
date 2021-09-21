@@ -61,6 +61,15 @@ client()
   });
 ```
 
+#### Create Empty Error With Default Message
+
+You can use `createError` function to create a empty error with default message.
+
+```ts
+import { createError } from "@bardoui/http";
+const e = createError();
+```
+
 ### Register Custom Error Parser
 
 **Note:** You can register multiple parser with same identifier.
