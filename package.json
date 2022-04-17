@@ -1,6 +1,6 @@
 {
     "name": "@bardoui/http",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "private": false,
     "description": "Axios based HTTP client with error handlers",
     "license": "ISC",
@@ -33,7 +33,7 @@
         "url": "https://github.com/bardoui/http"
     },
     "dependencies": {
-        "axios": "^0.21.1",
+        "axios": "^0.26.1",
         "core-js": "^3.6.5"
     },
     "devDependencies": {
