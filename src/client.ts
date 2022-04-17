@@ -20,7 +20,7 @@ export function createAxiosInstance(
     _client.interceptors.response.use(
         (resp) => resp,
         (err) => {
-            const e = createError()
+            const e = createError();
             if (err.response) {
                 e.raw = err.response;
                 e.type = "response";
@@ -33,6 +33,7 @@ export function createAxiosInstance(
                 e.raw = err;
                 e.type = undefined;
             }
+            e.canceled = axios.isCancel(err);
             resolveErrors(e);
             return Promise.reject(e);
         }

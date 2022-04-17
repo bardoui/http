@@ -1,6 +1,6 @@
 {
     "name": "@bardoui/http",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "private": false,
     "description": "Axios based HTTP client with error handlers",
     "license": "ISC",

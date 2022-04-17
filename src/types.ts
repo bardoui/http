@@ -8,6 +8,7 @@ export interface Error {
     body?: any;
     status?: number;
     message?: string;
+    canceled?: boolean;
 }
 
 /**
